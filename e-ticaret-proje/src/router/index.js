@@ -4,6 +4,7 @@ import Electronic from "@/ProductsByCategory/Electronic.vue";
 import Groceries from "@/ProductsByCategory/Groceries.vue";
 import Cosmetic from "@/ProductsByCategory/Cosmetic.vue";
 import HomeDecoration from "@/ProductsByCategory/HomeDecoration.vue";
+import LoginPage from "@/user/LoginPage.vue";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -32,6 +33,11 @@ const router = createRouter({
       path: "/Home-Decoration",
       name: "HomeDecoration",
       component: HomeDecoration,
+    },
+    {
+      path: "/Login",
+      name: "LoginPage",
+      component: LoginPage,
     },
   ],
 });

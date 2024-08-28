@@ -1,1 +1,3 @@
-<template><div>Anasayfa</div></template>
+<template>
+  <div>Anasayfa</div>
+</template>
