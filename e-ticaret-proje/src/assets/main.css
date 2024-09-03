@@ -1,3 +1,59 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
+
+main {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: start;
+}
+.card-container {
+  height: auto;
+  margin-top: 30px;
+  margin-left: 30px;
+  max-width: 300px;
+  width: 25%;
+  border: 1px solid grey;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.card img {
+  border-radius: 10px;
+}
+.card-body {
+  padding: 10px;
+  font-family: "Inter", sans-serif;
+  font-size: 16px;
+  margin-top: 10px;
+}
+.card-title {
+  font-size: 19px;
+  font-weight: 700;
+  margin: 5px 0;
+}
+.card-description {
+  height: 20px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.card-price {
+  margin: 5px 0;
+  color: green;
+  font-style: italic;
+}
+.card-category {
+  margin: 5px 0;
+  text-transform: capitalize;
+}
+
+@media screen and (max-width: 768px) {
+  .card-container {
+    margin-left: 10px;
+    width: 100%;
+  }
+}

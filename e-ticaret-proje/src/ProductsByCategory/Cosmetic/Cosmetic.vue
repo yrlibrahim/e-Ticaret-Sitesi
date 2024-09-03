@@ -1,5 +1,5 @@
 <template>
-  <main class="flex flex-wrap gap-3">
+  <main class="">
     <div
       class="auto-cols-auto card-container"
       v-for="product in products"
@@ -37,12 +37,21 @@ import { onMounted, ref } from "vue";
 import { useRouter } from "vue-router";
 
 const products = ref([]);
+const beautyProducts = ref([]);
+const groceryProducts = ref([]);
 const router = useRouter();
 
-const getUser = async () => {
+const fetchProducts = async () => {
   try {
-    const response = await axios.get("https://dummyjson.com/products");
-    products.value = response.data.products;
+    const [beautyResponse, groceryResponse] = await Promise.all([
+      axios.get("https://dummyjson.com/products/category/beauty"),
+      axios.get("https://dummyjson.com/products/category/fragrances"),
+    ]);
+
+    beautyProducts.value = beautyResponse.data.products;
+    groceryProducts.value = groceryResponse.data.products;
+
+    products.value = [...beautyProducts.value, ...groceryProducts.value];
   } catch (error) {
     console.error(error);
   }
@@ -53,6 +62,6 @@ const goToCategoryPage = (category) => {
 };
 
 onMounted(() => {
-  getUser();
+  fetchProducts();
 });
 </script>

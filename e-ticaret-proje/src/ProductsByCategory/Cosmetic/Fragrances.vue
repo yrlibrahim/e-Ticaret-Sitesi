@@ -41,7 +41,9 @@ const router = useRouter();
 
 const getUser = async () => {
   try {
-    const response = await axios.get("https://dummyjson.com/products");
+    const response = await axios.get(
+      "https://dummyjson.com/products/category/fragrances"
+    );
     products.value = response.data.products;
   } catch (error) {
     console.error(error);

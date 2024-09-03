@@ -5,9 +5,37 @@
         <router-link to="/">e-Market</router-link>
       </div>
       <div class="header-categorys flex gap-5">
-        <RouterLink to="/Electronics">Electronics</RouterLink>
+        <!-- Electronics Start -->
+        <div class="menu">
+          <RouterLink to="/Electronics">Electronics</RouterLink>
+          <div class="dropdown-menu">
+            <ul>
+              <li>
+                <router-link to="/SmartPhones">Smart Phones</router-link>
+              </li>
+              <li>
+                <router-link to="/Laptops">Laptops</router-link>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <!-- Electronics End -->
+        <!-- Cosmetics Start -->
+        <div class="menu">
+          <RouterLink to="/Cosmetics">Cosmetics</RouterLink>
+          <div class="dropdown-menu">
+            <ul>
+              <li>
+                <router-link to="/Fragrances">Fragrances</router-link>
+              </li>
+              <li>
+                <router-link to="/Beauty">Beauty</router-link>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <!-- Cosmetics End -->
         <RouterLink to="/Groceries">Groceries</RouterLink>
-        <RouterLink to="/Cosmetics">Cosmetics</RouterLink>
         <RouterLink to="/Home-Decoration">Home Decoration</RouterLink>
       </div>
     </div>
@@ -77,5 +105,20 @@ header {
   font-family: "Inter", sans-serif;
   font-weight: 500;
   font-size: 16px;
+}
+.dropdown-menu {
+  display: none;
+}
+.menu:hover .dropdown-menu {
+  display: block;
+  position: absolute;
+  border: 1px solid lightgray;
+  border-radius: 10px;
+  padding: 10px;
+  background-color: white;
+}
+.dropdown-menu ul li {
+  list-style: none;
+  margin: 10px 0;
 }
 </style>

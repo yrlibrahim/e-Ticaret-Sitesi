@@ -1,8 +1,12 @@
 import { createRouter, createWebHistory } from "vue-router";
 import Home from "../views/Home.vue";
-import Electronic from "@/ProductsByCategory/Electronic.vue";
+import Electronic from "@/ProductsByCategory/Electronic/Electronic.vue";
+import SmartPhones from "@/ProductsByCategory/Electronic/SmartPhones.vue";
+import Laptops from "@/ProductsByCategory/Electronic/Laptops.vue";
 import Groceries from "@/ProductsByCategory/Groceries.vue";
-import Cosmetic from "@/ProductsByCategory/Cosmetic.vue";
+import Cosmetic from "@/ProductsByCategory/Cosmetic/Cosmetic.vue";
+import Fragrances from "@/ProductsByCategory/Cosmetic/Fragrances.vue";
+import Beauty from "@/ProductsByCategory/Cosmetic/Beauty.vue";
 import HomeDecoration from "@/ProductsByCategory/HomeDecoration.vue";
 import LoginPage from "@/user/LoginPage.vue";
 
@@ -20,6 +24,16 @@ const router = createRouter({
       component: Electronic,
     },
     {
+      path: "/SmartPhones",
+      name: "SmartPhones",
+      component: SmartPhones,
+    },
+    {
+      path: "/Laptops",
+      name: "Laptops",
+      component: Laptops,
+    },
+    {
       path: "/Groceries",
       name: "Groceries",
       component: Groceries,
@@ -28,6 +42,16 @@ const router = createRouter({
       path: "/Cosmetics",
       name: "Cosmetic",
       component: Cosmetic,
+    },
+    {
+      path: "/Fragrances",
+      name: "Fragrances",
+      component: Fragrances,
+    },
+    {
+      path: "/Beauty",
+      name: "Beauty",
+      component: Beauty,
     },
     {
       path: "/Home-Decoration",
