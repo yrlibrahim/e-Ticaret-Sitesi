@@ -1,5 +1,5 @@
 <template>
-  <main class="">
+  <main class="flex flex-wrap">
     <div
       class="auto-cols-auto card-container"
       v-for="product in products"

@@ -1,9 +1,10 @@
-<header>
+<template>
+  <header>
     <div class="header-left-side flex items-center gap-8">
       <div class="header-logo">
         <router-link to="/">e-Market</router-link>
       </div>
-      <div class="header-categorys flex gap-5">
+      <div class="hidden sm:flex header-categorys gap-5">
         <!-- Electronics Start -->
         <div class="menu">
           <RouterLink to="/Electronics">Electronics</RouterLink>
@@ -53,8 +54,53 @@
           <router-link to="Login">Giriş Yap</router-link>
         </div>
         <div v-else>
-          <div>Çıkış Yap</div>
+          <router-link to="Login">Çıkış Yap</router-link>
         </div>
       </div>
     </div>
   </header>
+</template>
+<script setup></script>
+
+<style scoped>
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+.header-left-side {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.menu {
+  position: relative;
+}
+.menu:hover .dropdown-menu {
+  display: block;
+  position: absolute;
+  border: 1px solid lightgray;
+  border-radius: 10px;
+  background-color: white;
+  width: max-content;
+  padding: 10px;
+}
+.dropdown-menu {
+  display: none;
+}
+.dropdown-menu ul li {
+  border-radius: 10px;
+  padding: 5px;
+}
+.dropdown-menu ul li:hover {
+  background-color: grey;
+  border-radius: 10px;
+  padding: 5px;
+}
+.header-right-side {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: max-content;
+}
+</style>

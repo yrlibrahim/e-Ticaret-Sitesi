@@ -9,6 +9,7 @@ import Fragrances from "@/ProductsByCategory/Cosmetic/Fragrances.vue";
 import Beauty from "@/ProductsByCategory/Cosmetic/Beauty.vue";
 import HomeDecoration from "@/ProductsByCategory/HomeDecoration.vue";
 import LoginPage from "@/user/LoginPage.vue";
+import Card from "@/user/Card.vue";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -62,6 +63,11 @@ const router = createRouter({
       path: "/Login",
       name: "LoginPage",
       component: LoginPage,
+    },
+    {
+      path: "/Card",
+      name: "Card",
+      component: Card,
     },
   ],
 });
