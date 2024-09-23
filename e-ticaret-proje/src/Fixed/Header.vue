@@ -214,7 +214,7 @@ const dropdown = [
 ];
 
 const navigation = [
-  { name: "Fragrances", to: "/Fragrances" },
+  { name: "Groceries", to: "/Groceries" },
   { name: "Home Decoration", to: "/Home-Decoration" },
 ];
 

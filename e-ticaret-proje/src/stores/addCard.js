@@ -5,12 +5,12 @@ export const useCardStore = defineStore("card", {
     card: JSON.parse(localStorage.getItem("card")) || [],
   }),
   actions: {
-    addCard(movie) {
-      this.card.push(movie);
+    addCard(item) {
+      this.card.push(item);
       localStorage.setItem("card", JSON.stringify(this.card));
     },
-    removeFavorite(movieId) {
-      this.card = this.card.filter((movie) => movie.id !== movieId);
+    removeCard(itemId) {
+      this.card = this.card.filter((item) => item.id !== itemId);
       localStorage.setItem("card", JSON.stringify(this.card));
     },
   },

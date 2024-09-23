@@ -22,6 +22,7 @@
           >
           <button
             class="w-full bg-transparent hover:bg-[#c90800] text-[#c90800] font-semibold hover:text-white py-2 px-4 border border-[#c90800] hover:border-transparent rounded"
+            @click="toggleCard(product)"
           >
             Sepete Ekle
           </button>
@@ -35,30 +36,59 @@
 import axios from "axios";
 import { onMounted, ref } from "vue";
 import { useRouter } from "vue-router";
+import { useCardStore } from "../../stores/addCard"; // Card Store import
+import { useToast } from "vue-toast-notification"; // Toast notification import
+import "vue-toast-notification/dist/theme-sugar.css"; // Toast notification CSS
 
 const products = ref([]);
-const beautyProducts = ref([]);
-const groceryProducts = ref([]);
+const smartphonesProducts = ref([]);
+const laptopsProducts = ref([]);
 const router = useRouter();
+const cardStore = useCardStore(); // Initialize card store
+const $toast = useToast(); // Initialize toast notification
 
+// Ürünleri API'den al
 const fetchProducts = async () => {
   try {
-    const [beautyResponse, groceryResponse] = await Promise.all([
+    const [smartphonesResponse, laptopsResponse] = await Promise.all([
       axios.get("https://dummyjson.com/products/category/smartphones"),
       axios.get("https://dummyjson.com/products/category/laptops"),
     ]);
 
-    beautyProducts.value = beautyResponse.data.products;
-    groceryProducts.value = groceryResponse.data.products;
+    smartphonesProducts.value = smartphonesResponse.data.products;
+    laptopsProducts.value = laptopsResponse.data.products;
 
-    products.value = [...beautyProducts.value, ...groceryProducts.value];
+    products.value = [...smartphonesProducts.value, ...laptopsProducts.value];
   } catch (error) {
     console.error(error);
   }
 };
 
+// Kategori sayfasına gitme
 const goToCategoryPage = (category) => {
   router.push(`/${category}`);
+};
+
+// Sepette olup olmadığını kontrol et
+const isInCard = (productId) => {
+  return cardStore.card.some((product) => product.id === productId);
+};
+
+// Sepete ekleme ve çıkarma işlemi
+const toggleCard = (product) => {
+  if (isInCard(product.id)) {
+    cardStore.removeFavorite(product.id);
+    $toast.error("Ürün başarıyla çıkarıldı!", {
+      position: "top-right",
+      duration: 3000,
+    });
+  } else {
+    cardStore.addCard(product);
+    $toast.success("Ürün başarıyla sepete eklendi!", {
+      position: "top-right",
+      duration: 3000,
+    });
+  }
 };
 
 onMounted(() => {

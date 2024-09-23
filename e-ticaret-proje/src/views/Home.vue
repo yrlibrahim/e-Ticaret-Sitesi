@@ -38,7 +38,9 @@ import axios from "axios";
 import { onMounted, ref } from "vue";
 import { useRouter } from "vue-router";
 import { useCardStore } from "../stores/addCard.js"; // Card store import
+import { useToast } from "vue-toast-notification";
 
+const $toast = useToast();
 const products = ref([]);
 const router = useRouter();
 const cardStore = useCardStore(); // Initialize card store
@@ -65,6 +67,10 @@ const toggleCard = (product) => {
     cardStore.removeFavorite(product.id);
   } else {
     cardStore.addCard(product);
+    $toast.success("Ürün başarıyla sepete eklendi!", {
+      position: "top-right",
+      duration: 3000,
+    });
   }
 };
 
