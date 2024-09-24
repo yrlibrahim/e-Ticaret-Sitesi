@@ -2,6 +2,24 @@
   <div>
     <div v-if="filteredCard.length === 0">Sepetiniz boş.</div>
     <div v-else>
+      <div
+        class="w-full border-[1px] rounded-[15px] flex"
+        v-for="item in filteredCard"
+        :key="item.id"
+      >
+        <div class="card">
+          <img class="w-24 h-24" :src="item.thumbnail" />
+        </div>
+        <div class="cart-body">
+          <p class="truncate hover:overflow-visible w-[90%]">
+            {{ item.description }}
+          </p>
+          <b class="">{{ item.title }}</b>
+          <p>{{ item.price }}</p>
+        </div>
+      </div>
+    </div>
+    <!-- <div v-else>
       <main class="flex flex-wrap">
         <div
           class="auto-cols-auto card-container"
@@ -34,7 +52,7 @@
           </div>
         </div>
       </main>
-    </div>
+    </div> -->
   </div>
 </template>
 
@@ -60,7 +78,7 @@ const filteredCard = computed(() => {
 // Sepetten ürün kaldırma fonksiyonu
 const removeFromCard = (item) => {
   cardStore.removeCard(item.id);
-  $toast.error("Ürün başarıyla çıkarıldı!", {
+  $toast.error("Ürün çıkarıldı!", {
     position: "top-right",
     duration: 3000,
   });
@@ -71,3 +89,4 @@ const goToCategoryPage = (category) => {
   router.push(`/${category}`);
 };
 </script>
+<style scoped></style>

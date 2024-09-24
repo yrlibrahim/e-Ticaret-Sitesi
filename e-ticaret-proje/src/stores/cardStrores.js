@@ -9,7 +9,7 @@ export const useCardStore = defineStore("card", {
     addCard(product) {
       this.card.push(product);
     },
-    removeFavorite(productId) {
+    removeCard(productId) {
       this.card = this.card.filter((product) => product.id !== productId);
     },
   },

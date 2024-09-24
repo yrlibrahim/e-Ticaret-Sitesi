@@ -67,7 +67,7 @@ const isInCard = (productId) => {
 // Sepete ekleme ve çıkarma işlemi
 const toggleCard = (product) => {
   if (isInCard(product.id)) {
-    cardStore.removeFavorite(product.id);
+    cardStore.removeCard(product.id);
     $toast.error("Ürün başarıyla çıkarıldı!", {
       position: "top-right",
       duration: 3000,
