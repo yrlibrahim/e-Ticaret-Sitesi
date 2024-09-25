@@ -21,7 +21,7 @@
     "firebase": "^10.13.0",
     "pinia": "^2.1.7",
     "primeicons": "^7.0.0",
-    "primevue": "^4.0.5",
+    "primevue": "^4.0.7",
     "tw-elements": "^2.0.0",
     "vee-validate": "^4.13.2",
     "vue": "^3.4.29",

@@ -3,56 +3,54 @@
     <div v-if="filteredCard.length === 0">Sepetiniz boş.</div>
     <div v-else>
       <div
-        class="w-full border-[1px] rounded-[15px] flex"
+        class="w-[70%] border-[1px] rounded-[15px] flex mb-5 py-4"
         v-for="item in filteredCard"
         :key="item.id"
       >
+        <!--İmage Side Start-->
         <div class="card">
-          <img class="w-24 h-24" :src="item.thumbnail" />
+          <img class="w-24 h-24 me-4" :src="item.thumbnail" />
         </div>
-        <div class="cart-body">
-          <p class="truncate hover:overflow-visible w-[90%]">
+        <!--İmage Side End-->
+        <!--Card Details Side Start-->
+        <div class="cart-body w-[70%]">
+          <p class="truncate w-[90%]">
             {{ item.description }}
           </p>
           <b class="">{{ item.title }}</b>
           <p>{{ item.price }}</p>
+          <p>Toplam: {{ store.getTotalPrice(item.id) }}₺</p>
         </div>
+        <!--Card Details Side End-->
+        <!--Delete Buttons end Counter Side End-->
+        <div>
+          <button
+            class="pi pi-trash w-6 h-6 rounded-[25px] hover:bg-red-500 hover:text-white"
+            @click="removeFromCard(item)"
+          ></button>
+          <!--Counter Side Start-->
+          <div class="rounded-[10px] border-[1px] flex items-center gap-1 mt-5">
+            <button
+              class="rounded-[10px] border-[1px] p-2 w-8 h-8 flex items-center justify-center bg-neutral-300"
+              @click="store.decrement(item.id)"
+            >
+              -
+            </button>
+            <span class="w-8 h-8 flex items-center justify-center">{{
+              store.getCount(item.id)
+            }}</span>
+            <button
+              class="rounded-[10px] border-[1px] p-2 w-8 h-8 flex items-center justify-center bg-neutral-300"
+              @click="store.increment(item.id)"
+            >
+              +
+            </button>
+          </div>
+          <!--Counter Side End-->
+        </div>
+        <!--Delete Buttons end Counter Side End-->
       </div>
     </div>
-    <!-- <div v-else>
-      <main class="flex flex-wrap">
-        <div
-          class="auto-cols-auto card-container"
-          v-for="item in filteredCard"
-          :key="item.id"
-        >
-          <div class="card">
-            <img
-              class="object-cover w-full h-full"
-              :src="item.thumbnail"
-              alt="item Image"
-            />
-            <div class="card-body">
-              <h2 class="card-title">{{ item.title }}</h2>
-              <p class="card-description">{{ item.description }}</p>
-              <p class="card-price">{{ item.price }}</p>
-              <span
-                class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2"
-                @click="goToCategoryPage(item.category)"
-              >
-                {{ item.category }}
-              </span>
-              <button
-                class="w-full bg-transparent hover:bg-[#c90800] text-[#c90800] font-semibold hover:text-white py-2 px-4 border border-[#c90800] hover:border-transparent rounded"
-                @click="removeFromCard(item)"
-              >
-                Sepetten Kaldır
-              </button>
-            </div>
-          </div>
-        </div>
-      </main>
-    </div> -->
   </div>
 </template>
 
@@ -62,7 +60,10 @@ import { useCardStore } from "../stores/addCard.js";
 import { useRouter } from "vue-router";
 import { useToast } from "vue-toast-notification";
 import "vue-toast-notification/dist/theme-sugar.css";
+import "primeicons/primeicons.css";
+import { useCounterStore } from "@/stores/cardCounter.js";
 
+const store = useCounterStore();
 const $toast = useToast();
 const cardStore = useCardStore();
 const searchQuery = ref("");
@@ -89,4 +90,3 @@ const goToCategoryPage = (category) => {
   router.push(`/${category}`);
 };
 </script>
-<style scoped></style>
