@@ -1,4 +1,16 @@
 <template>
+  <div class="h-screen overflow-hidden z-0">
+    <video
+      class="absolute top-1/2 left-1/2 w-full h-full object-cover transform -translate-x-1/2 -translate-y-1/2"
+      autoplay
+      muted
+      loop
+      playsinline
+    >
+      <source src="../assets/images/background-video.mp4" type="video/mp4" />
+      Tarayıcınız video oynatmayı desteklemiyor.
+    </video>
+  </div>
   <main class="flex flex-wrap">
     <div
       class="auto-cols-auto card-container"
@@ -82,3 +94,8 @@ onMounted(() => {
   getUser();
 });
 </script>
+<style scoped>
+.z-index {
+  z-index: -10;
+}
+</style>
